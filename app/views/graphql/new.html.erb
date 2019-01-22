@@ -1,0 +1,10 @@
+
+<%graphql
+  fragment Article on Blog{
+    repo(){
+      allBlogs
+    }
+  }
+%>
+
+<% article = Article::repo;%>

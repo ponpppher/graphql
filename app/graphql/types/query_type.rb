@@ -16,4 +16,11 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :id, !types.ID
     resolve -> (obj, args, ctx) { Blog.find(args[:id]) }
   end
+
+  field :blog do
+    type types[Types::BlogType]
+
+    argument :limit, !types.Int
+    resolve -> (obj, args, ctx) { Blog.all.limit(args[:limit])}
+  end
 end
